@@ -1,5 +1,5 @@
 import Mongoose = require("mongoose");
-//import mockgoose = require("mockgoose");
+import mockgoose = require("mockgoose");
 
 class DataAccess {
     static mongooseInstance: any;

@@ -9,3 +9,7 @@ brew install mongodb
 mongod to start the mongo instance
 
 This app uses a database called heros - change this in the config/database.ts file
+
+gulp to build the dist
+npm start to start the app
+npm test to test the app

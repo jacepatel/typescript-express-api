@@ -1,12 +1,12 @@
-import {Router, Request, Response, NextFunction} from 'express';
-import { IModel } from '../models/model'
-import { IUserModel } from '../models/user'
-import { userSchema } from '../schemas/user'
-import { UserController } from '../controllers/userController'
+import {Router, Request, Response, NextFunction} from "express";
+import { IModel } from "../models/model";
+import { IUserModel } from "../models/user";
+import { userSchema } from "../schemas/user";
+import { UserController } from "../controllers/userController";
 
 export class UserRouter {
-  router: Router
-  private _userController: UserController
+  router: Router;
+  private _userController: UserController;
 
   constructor() {
     this.router = Router();
@@ -15,9 +15,10 @@ export class UserRouter {
   }
 
   init() {
-    var controller = this._userController;
-    this.router.get('/', controller.retrieve);
-    this.router.post('/', controller.create);
+    let controller = this._userController;
+    this.router.get("/", controller.retrieve);
+    this.router.post("/", controller.create);
+    this.router.get("/:id", controller.retrieveOne);
   }
 }
 
