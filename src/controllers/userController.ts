@@ -1,12 +1,6 @@
 import {Router, Request, Response, NextFunction} from "express";
-import { IUserModel } from "../models/user";
-import { userSchema } from "../schemas/user";
-import { Model } from "mongoose";
-import DataAccess = require("../config/database");
+import * as User from "../models/user";
 import { IReturnData } from "../../src/interfaces/ReturnData";
-
-const User: Model<IUserModel> = DataAccess.mongooseConnection.model<IUserModel>("User", userSchema);
-
 export class UserController {
   constructor() {
   }

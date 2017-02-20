@@ -3,17 +3,11 @@ import * as chai from "chai";
 import chaiHttp = require("chai-http");
 import * as sinon from "sinon";
 import { UserController } from "../../src/controllers/userController";
-import { IUser } from "../../src/interfaces/user";
-import { IUserModel } from "../../src/models/user";
-import { userSchema } from "../../src/schemas/user";
-import { Model } from "mongoose";
-import DataAccess = require("../../src/config/database");
-
+import * as User from "../../src/models/user";
 import app from "../../src/App";
 
 chai.use(chaiHttp);
 const expect = chai.expect;
-const User: Model<IUserModel> = DataAccess.mongooseConnection.model<IUserModel>("User", userSchema);
 describe("UserRoutes", () => {
   describe("GET api/v1/users", () => {
     // Before each test we empty the database

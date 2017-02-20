@@ -1,12 +1,6 @@
 import "mocha";
 import { IUser } from "../../src/interfaces/user";
-import { IUserModel } from "../../src/models/user";
-import { userSchema } from "../../src/schemas/user";
-// import mongoose
-import { Model } from "mongoose";
-import DataAccess = require("../../src/config/database");
-
-const User: Model<IUserModel> = DataAccess.mongooseConnection.model<IUserModel>("User", userSchema);
+import * as User from "../../src/models/user";
 
 // require chai and use should() assertions
 let chai = require("chai");

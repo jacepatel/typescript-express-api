@@ -1,6 +1,7 @@
-import { Document } from "mongoose";
-import { IUser } from "../interfaces/user";
+import { IUserModel } from "./interfaces/user";
+import { userSchema } from "../schemas/user";
+import { Model } from "mongoose";
+import DataAccess = require("../config/database");
 
-export interface IUserModel extends IUser, Document {
-  //custom methods for your model would be defined here
-}
+let User: Model<IUserModel> = DataAccess.mongooseConnection.model<IUserModel>("User", userSchema);
+export = User;

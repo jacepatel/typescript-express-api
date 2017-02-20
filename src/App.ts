@@ -6,17 +6,13 @@ import * as bodyParser from "body-parser";
 import BaseRouter from "./routes/BaseRouter";
 import UserRouter from "./routes/UserRouter";
 import DataAccess = require("./config/database");
+import localPassport = require("./config/passport");
 import * as mongoose from "mongoose";
+import * as passport from "passport";
 // Creates and configures an ExpressJS web server.
 
 // interfaces
-import { IUser } from "./interfaces/user";
-
-// models
-import { IUserModel } from "./models/user";
-
-// schemas
-import { userSchema } from "./schemas/user";
+import * as User from "./models/user";
 
 class App {
   // ref to Express instance
@@ -34,6 +30,7 @@ class App {
     this.express.use(logger("dev"));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(passport.initialize());
     // mount cookie parser here if needed
   }
 
@@ -48,7 +45,6 @@ class App {
     // mongoose.Promise = global.Promise;
     const MONGODB_CONNECTION: string = "mongodb://localhost:27017/heros";
     let connection: mongoose.Connection = DataAccess.mongooseConnection;
-
   };
 }
 
