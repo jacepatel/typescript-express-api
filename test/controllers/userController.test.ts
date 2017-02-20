@@ -8,7 +8,7 @@ import app from "../../src/App";
 
 chai.use(chaiHttp);
 const expect = chai.expect;
-const userController = new UserController
+const userController = new UserController;
 
 describe("UserController", () => {
   describe("Retrieve", function() {

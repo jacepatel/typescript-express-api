@@ -10,6 +10,7 @@ class DataAccess {
     }
 
     static connect (): Mongoose.Connection {
+        if (process.env.NODE_ENV === "test") return Mockgoose(Mongoose).then((): void => { Mongoose.connect("mongodb://example.com/TestingDB") });
         if (this.mongooseInstance) return this.mongooseInstance;
 
         this.mongooseConnection  = Mongoose.connection;
