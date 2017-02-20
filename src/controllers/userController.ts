@@ -18,6 +18,7 @@ export class UserController {
         };
         res.json({info: "Users found successfully", data: Users});
     });
+    res.send();
   }
 
   create(req: Request, res: Response, next: NextFunction) {
@@ -28,6 +29,7 @@ export class UserController {
         }
         res.json({info: "User saved successfully", data: newUser});
     });
+    res.send();
   }
 
   retrieveOne(req: Request, res: Response, next: NextFunction) {
@@ -44,6 +46,7 @@ export class UserController {
             res.json({info: "User not found with id:" + id});
         }
     });
+    res.send();
   }
 }
 
