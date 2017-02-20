@@ -1,5 +1,4 @@
 import {Router, Request, Response, NextFunction} from "express";
-import { IModel } from "../models/model";
 import { IUserModel } from "../models/user";
 import { userSchema } from "../schemas/user";
 import { UserController } from "../controllers/userController";

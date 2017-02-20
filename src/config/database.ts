@@ -1,5 +1,5 @@
 import Mongoose = require("mongoose");
-import Mockgoose = require("mockgoose");
+// import Mockgoose = require("mockgoose");
 
 class DataAccess {
     static mongooseInstance: any;
@@ -10,10 +10,11 @@ class DataAccess {
     }
 
     static connect (): Mongoose.Connection {
-        if (process.env.NODE_ENV === "test") {
-          console.log("Connected to test DB");
-          return Mockgoose(Mongoose).then((): void => { Mongoose.connect("mongodb://example.com/TestingDB"); });
-        };
+      console.log(process.env.NODE_ENV);
+        // if (process.env.NODE_ENV === "test") {
+        //   console.log("Connected to test DB");
+        //   return Mockgoose(Mongoose).then((): void => { Mongoose.connect("mongodb://example.com/TestingDB"); });
+        // };
         if (this.mongooseInstance) return this.mongooseInstance;
 
         this.mongooseConnection  = Mongoose.connection;

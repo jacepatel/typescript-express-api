@@ -13,32 +13,37 @@ import app from "../../src/App";
 
 chai.use(chaiHttp);
 const expect = chai.expect;
-
-describe("GET api/v1/users", () => {
-
-  it("should call the UserController for retrieve and return no objects", () => {
-    chai.request(app)
-    .get("/api/v1/users").then(res => {
-      res.should.have.status(200);
-      res.body.should.be.a("array");
-      res.body.length.should.be.eql(1);
+const User: Model<IUserModel> = DataAccess.mongooseConnection.model<IUserModel>("User", userSchema);
+describe("UserRoutes", () => {
+  describe("GET api/v1/users", () => {
+    // Before each test we empty the database
+    beforeEach((done) => {
+      User.remove({}, (err) => {
+        done();
+      });
     });
-  });
 
-  it("should include first user", () => {
-    let User: Model<IUserModel> = DataAccess.mongooseConnection.model<IUserModel>("User", userSchema);
-    let user = new User({email: "an@email.com"});
-    user.save(book => {
-      chai.request(app).get("/api/v1/users")
-      .then(res => {
-        let FoundUser = res.body.find(object => object.id === 1);
-        expect(FoundUser).to.exist;
-        expect(FoundUser).to.have.all.keys([
-          "id", "email"
-        ]);
-        expect(FoundUser.email).to.equal("an@email.com")
+    it("should call the UserController for retrieve and return no objects", (done) => {
+      chai.request(app)
+      .get("/api/v1/users").end((err, res) => {
+        res.should.have.status(200);
+        res.body.data.should.be.a("array");
+        res.body.data.length.should.be.eql(0);
+      done();
+      });
+    });
+
+    it("should include first user", (done) => {
+      let userEmail = "an@email.com";
+      let user = new User({email: userEmail});
+      user.save((err, user) => {
+        chai.request(app).get("/api/v1/users").end((err, res) => {
+          let data = res.body.data;
+          data.length.should.be.eql(1);
+          data[0].email.should.eql(userEmail);
+          done();
+        });
       });
     });
   });
-
 });
