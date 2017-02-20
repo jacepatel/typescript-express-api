@@ -3,7 +3,6 @@ import * as express from "express";
 import * as logger from "morgan";
 import * as bodyParser from "body-parser";
 import * as mockgoose from "mockgoose";
-import ObjectRouter from "./routes/ObjectRouter";
 import BaseRouter from "./routes/BaseRouter";
 import UserRouter from "./routes/UserRouter";
 import DataAccess = require("./config/database");
@@ -41,7 +40,6 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     this.express.use("/", BaseRouter);
-    this.express.use("/api/v1/objects", ObjectRouter);
     this.express.use("/api/v1/users", UserRouter);
   }
 
