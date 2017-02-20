@@ -15,9 +15,10 @@ export class UserController {
     let returnData: IReturnData;
     User.find((err, Users) => {
         if (err) {
-            returnData = {info: "error during find Users", error: err};
+          returnData = {info: "error during find Users", error: err};
+        } else {
+          returnData = {info: "Users found successfully", data: Users};
         };
-        returnData = {info: "Users found successfully", data: Users};
         res.send(returnData);
     });
   }
@@ -28,11 +29,12 @@ export class UserController {
     let returnData: IReturnData;
     newUser.save((err) => {
         if (err) {
-            res.json({info: "error during User create", error: err});
+            returnData = {info: "error during User create", error: err};
+        } else {
+          returnData = {info: "User saved successfully", data: newUser};
         }
-        res.json({info: "User saved successfully", data: newUser});
+        res.send(returnData);
     });
-    res.send();
   }
 
   retrieveOne(req: Request, res: Response, next: NextFunction) {
@@ -49,8 +51,8 @@ export class UserController {
         } else {
             returnData = {info: "User not found with id:" + id};
         }
+        res.send(returnData);
     });
-    res.send(returnData);
   }
 }
 

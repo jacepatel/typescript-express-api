@@ -11,13 +11,15 @@ const expect = chai.expect;
 const userController = new UserController;
 
 describe("UserController", () => {
-  describe("Retrieve", function() {
-    // it("should respond", function() {
-    //   let req,res,next,spy;
-    //   req = res = next = {};
-    //   spy = res.send = sinon.spy();
-    //   userController.retrieve(req, res, next);
-    //   expect(spy.calledOnce).to.equal(true);
-    // });
+  describe("retrieveOne", function() {
+    it("should respond", function() {
+      // let req, res, next, spy;
+      // req = res = next = {};
+      // req.params = {id: 1}
+      //
+      // spy = res.send = sinon.spy();
+      // userController.retrieveOne(req, res, next);
+      // expect(spy.called).to.equal(true);
+    });
   });
 });
