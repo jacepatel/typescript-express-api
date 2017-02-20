@@ -27,6 +27,7 @@
     "gulp-typescript": "^3.1.1",
     "mocha": "^3.2.0",
     "node-inspector": "^0.12.8",
+    "mockgoose": "^6.0.8",
     "ts-node": "^2.0.0",
     "typescript": "^2.0.6"
   },
@@ -34,7 +35,6 @@
     "body-parser": "^1.16.0",
     "debug": "^2.6.0",
     "express": "^4.14.1",
-    "mockgoose": "^6.0.8",
     "mongoose": "^4.8.1",
     "morgan": "^1.8.0"
   }

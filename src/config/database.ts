@@ -1,5 +1,5 @@
 import Mongoose = require("mongoose");
-import mockgoose = require("mockgoose");
+import Mockgoose = require("mockgoose");
 
 class DataAccess {
     static mongooseInstance: any;
@@ -10,7 +10,7 @@ class DataAccess {
     }
 
     static connect (): Mongoose.Connection {
-        if(this.mongooseInstance) return this.mongooseInstance;
+        if (this.mongooseInstance) return this.mongooseInstance;
 
         this.mongooseConnection  = Mongoose.connection;
         this.mongooseConnection.once("open", () => {
