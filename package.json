@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
+    "another": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts",
+    "test": "istanbul cover _mocha -- --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },
   "repository": {
-  "type": "git",
-  "url": "git://github.com/jacepatel/typescript-express-api.git"
+    "type": "git",
+    "url": "git://github.com/jacepatel/typescript-express-api.git"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "chai-http": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.1.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "mockgoose": "^6.0.8",
     "node-inspector": "^0.12.8",
