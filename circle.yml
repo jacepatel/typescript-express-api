@@ -1,6 +1,8 @@
 machine:
   node:
 dependencies:
+  pre:
+    - npm install -g gulp
   override:
     - npm install
     - gulp scripts
